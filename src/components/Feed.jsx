@@ -1,3 +1,4 @@
+import { Box, Stack, Typography } from '@mui/material'
 import React from 'react'
 
 const Feed = () => {
@@ -6,4 +7,5 @@ const Feed = () => {
     )
 }
 
-export default Feed
+export default Feed;
+

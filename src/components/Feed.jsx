@@ -1,8 +1,19 @@
 import { Box, Stack, Typography } from '@mui/material'
-import React from 'react'
-import { Sidebar, Videos } from './';
+import React, { useEffect, useState } from 'react'
+import { Sidebar, Videos } from './'
+import { fetchFromAPI } from '../utils/fetchFromAPI'
 
 const Feed = () => {
+    const [selectedCat, setSelectedCat] = useState('New');
+    const [videos, setVideos] = useState([]);
+
+    useEffect(() => {
+        fetchFromAPI(`/search?part=snippet&q=${selectedCat}`)
+            .then((data) => {
+                setVideos(data.items);
+            });
+    }, [selectedCat]);
+
     return (
         <Stack sx={{
             flexDirection: {
@@ -15,12 +26,12 @@ const Feed = () => {
                 borderRight: "1px solid #3d3d3d",
                 px: { sx: 0, md: 2 }
             }}>
-                <Sidebar />
+                <Sidebar selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
                 <Typography className='copyright'
                     variant="body2"
                     sx={{ mt: 1.5, color: '#fff' }}
                 >
-                    Copyright 2022 JSM Media
+                    Copyright 2024 Media
 
                 </Typography>
             </Box>
@@ -31,10 +42,10 @@ const Feed = () => {
                     mb={2}
                     sx={{ color: "white" }}
                 >
-                    New <span style={{ color: '#f31503' }}>videos</span>
+                    {selectedCat} <span style={{ color: '#f31503' }}>videos</span>
                 </Typography>
 
-                <Videos videos={[]} />
+                <Videos videos={videos} />
 
             </Box>
 

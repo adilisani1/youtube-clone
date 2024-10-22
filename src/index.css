@@ -2,7 +2,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-        box-sizing: border-box;
+    box-sizing: border-box;
     }
     
     a {
@@ -79,11 +79,11 @@ body {
             overflow: auto !important;
         }
 
-                                                                .react-player {
-                                                                    height: 45vh !important;
-                                                                }
+        .react-player {
+            height: 45vh !important;
+        }
 
-                                                                .search-bar {
-                                                                    width: 200px;
-                                                                }
-                                                                }
+        .search-bar {
+            width: 200px;
+        }
+        }

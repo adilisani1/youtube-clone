@@ -8,7 +8,7 @@ const Feed = () => {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        fetchFromAPI(`/search?part=snippet&q=${selectedCat}`)
+        fetchFromAPI(`search?part=snippet&q=${selectedCat}`)
             .then((data) => {
                 setVideos(data.items);
             });
